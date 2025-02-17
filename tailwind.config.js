@@ -1,5 +1,9 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      lineHeight: {
+        tight: "1.2",
+      },
+    },
   },
 };
