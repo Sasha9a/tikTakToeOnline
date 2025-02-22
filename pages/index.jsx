@@ -3,8 +3,8 @@ import { GameField, GameInfo, GameTitle, useGameState } from '../components/game
 import { useState } from 'react';
 
 export default function HomePage() {
-  const [playersCount] = useState(4);
-  const { cells, currentMove, nextMove, handleCellClick } = useGameState(playersCount);
+  const [playersCount] = useState(2);
+  const { cells, currentMove, nextMove, handleCellClick, winnerSequence } = useGameState(playersCount);
 
   return (
     <div className="bg-slate-50 min-h-screen">
@@ -17,6 +17,7 @@ export default function HomePage() {
           cells={cells}
           currentMove={currentMove}
           nextMove={nextMove}
+          winnerSequence={winnerSequence}
           handleCellClick={handleCellClick}
           className="mt-6"
         />
