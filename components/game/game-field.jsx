@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { UiButton } from '../uikit';
 import { GameSymbol } from './game-symbol';
 
-export function GameField({ className, cells, currentMove, nextMove, handleCellClick, winnerSequence }) {
+export function GameField({ className, cells, currentMove, nextMove, handleCellClick, winnerSequence, winnerSymbol }) {
   const actions = (
     <>
       <UiButton size="md" variant="primary">
@@ -22,6 +22,7 @@ export function GameField({ className, cells, currentMove, nextMove, handleCellC
           <GameCell
             key={index}
             isWinner={winnerSequence?.includes(index)}
+            disabled={!!winnerSymbol}
             onClick={() => {
               handleCellClick(index);
             }}
@@ -34,13 +35,14 @@ export function GameField({ className, cells, currentMove, nextMove, handleCellC
   );
 }
 
-function GameCell({ children, onClick, isWinner }) {
+function GameCell({ children, onClick, isWinner, disabled }) {
   return (
     <button
       className={clsx(
         'border border-slate-200 cursor-pointer -ml-px -mt-px flex items-center justify-center',
         isWinner && 'bg-orange-600/10'
       )}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}
